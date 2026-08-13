@@ -72,5 +72,3 @@ We follow a standard GitFlow process:
 - `feature/*` - Feature development branches.
 - `bugfix/*` - Bug fix branches.
 
-## Contribution Guide
-Please read `CONTRIBUTING.md` for our code of conduct, pull request process, and coding standards. Make sure to adhere to PEP8/Black for Python, and ESLint/Prettier for JavaScript.
