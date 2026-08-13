@@ -1,0 +1,36 @@
+from django.urls import path
+from .views import (
+    ConversationListView,
+    CreateGroupConversationView,
+    ConversationDetailView,
+    ToggleMuteConversationView,
+    TogglePinConversationView,
+    ToggleArchiveConversationView,
+    ToggleUnreadConversationView,
+    MessageListView,
+    SendMessageView,
+    ToggleReactionView,
+    GroupUpdateView,
+    GroupMemberActionView,
+    GroupLeaveView,
+    ToggleStarView,
+    MessageSyncView,
+)
+
+urlpatterns = [
+    path("conversations/", ConversationListView.as_view(), name="conversation-list"),
+    path("conversations/group/", CreateGroupConversationView.as_view(), name="conversation-group-create"),
+    path("conversations/<int:conversation_id>/", ConversationDetailView.as_view(), name="conversation-detail"),
+    path("conversations/<int:conversation_id>/mute/", ToggleMuteConversationView.as_view(), name="conversation-mute"),
+    path("conversations/<int:conversation_id>/pin/", TogglePinConversationView.as_view(), name="conversation-pin"),
+    path("conversations/<int:conversation_id>/archive/", ToggleArchiveConversationView.as_view(), name="conversation-archive"),
+    path("conversations/<int:conversation_id>/unread/", ToggleUnreadConversationView.as_view(), name="conversation-unread"),
+    path("messages/<int:conversation_id>/", MessageListView.as_view(), name="message-list"),
+    path("messages/<int:conversation_id>/sync/", MessageSyncView.as_view(), name="message-sync"),
+    path("messages/<int:message_id>/react/", ToggleReactionView.as_view(), name="toggle-reaction"),
+    path("send/", SendMessageView.as_view(), name="send-message"),
+    path("group/<int:conversation_id>/", GroupUpdateView.as_view(), name="group-update"),
+    path("group/<int:conversation_id>/members/", GroupMemberActionView.as_view(), name="group-member-action"),
+    path("group/<int:conversation_id>/leave/", GroupLeaveView.as_view(), name="group-leave"),
+    path("messages/<int:message_id>/star/", ToggleStarView.as_view(), name="toggle-star"),
+]
